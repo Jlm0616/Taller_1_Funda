@@ -29,7 +29,7 @@ bool boton1EstadoAnterior = HIGH;
 bool boton2EstadoAnterior = HIGH;
 bool boton3EstadoAnterior = HIGH;
 bool boton4EstadoAnterior = HIGH;
-bool boton3PresionadoPrimero = false;
+bool boton4PresionadoPrimero = false;
 
 void setup()
 {
@@ -71,9 +71,9 @@ void loop() {
   if (boton2Estado == LOW && boton2EstadoAnterior == HIGH) {
     contador ++;
   }
-  if (boton4Estado == LOW && boton4EstadoAnterior == HIGH) {
+  if (boton3Estado == LOW && boton3EstadoAnterior == HIGH) {
     contador =0;
-    boton3PresionadoPrimero = false;
+    boton4PresionadoPrimero = false;
     
     digitalWrite(led, LOW);
     analogWrite(rojo1, 0);
@@ -89,11 +89,11 @@ void loop() {
     analogWrite(azul4, 0);
     analogWrite(verde4, 0);    
   }
-  if (boton3Estado == LOW && boton3EstadoAnterior == HIGH && contador == 0) {
-    boton3PresionadoPrimero = true;
+  if (boton4Estado == LOW && boton4EstadoAnterior == HIGH && contador == 0) {
+    boton4PresionadoPrimero = true;
   }
   
-  int maxContador = boton3PresionadoPrimero ? 8 : 15;
+  int maxContador = boton4PresionadoPrimero ? 8 : 15;
 
   if (contador > maxContador) {
       digitalWrite(led, HIGH);  // Enciende el LED si el contador excede el maxContador
@@ -121,7 +121,7 @@ void loop() {
   boton3EstadoAnterior = boton3Estado;
   boton4EstadoAnterior = boton4Estado;
   
-  if  (boton3PresionadoPrimero){
+  if  (boton4PresionadoPrimero){
     if (contador == 1) {
       analogWrite(rojo1, 0);
       analogWrite(azul1, 0);
